@@ -39,6 +39,47 @@ img {
 
 }
 
+
+.last-blog {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.last-blog li {
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.last-blog li a {
+    display: flex;
+    margin: 0;
+    padding: .5rem;
+    border: 1px solid #bbbbbb;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.last-blog .image {
+    flex: 1 auto;
+    max-width: 40%;
+    margin-right: 10px;
+}
+
+.last-blog .image img {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.last-blog .content {
+    flex: 1;
+}
+
+.last-blog .content p {
+    margin-bottom: 0;
+}
+
 footer h2 {
     font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
     color: #fed136;
