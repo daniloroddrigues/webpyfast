@@ -11,7 +11,7 @@ class HomeTest(TestCase):
 
     def test_template(self):
         """Deve retornar o template """
-        self.assertTemplateUsed(self.resp, 'core/index.html')
+        self.assertTemplateUsed(self.resp, 'index.html')
 
     def test_html(self):
         """Deve conter na home esses html, """
