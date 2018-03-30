@@ -35,8 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webpyfast.blogs',
+    'test_without_migrations',
     'webpyfast.core',
+    'webpyfast.blogs',
 ]
 
 MIDDLEWARE = [

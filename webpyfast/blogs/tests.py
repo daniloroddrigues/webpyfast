@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.test import TestCase
 from webpyfast.blogs.models import Blog
 
@@ -5,13 +7,13 @@ from webpyfast.blogs.models import Blog
 class BlogTest(TestCase):
     def setUp(self):
         self.resp = self.client.get('/blog/')
-        self.obj = Blog(
-            title='Título do Blog',
-            image='url/do/blog',
-            slug='titulo-do-blog',
-            description='Conteudo do bog'
-        )
 
+        self.obj = Blog(
+            title='Titulo do Post',
+            slug='titulo-do-post',
+            image='url/to/image',
+            description='Descrição do blog',
+        )
         self.obj.save()
 
     def test_get(self):
@@ -35,3 +37,21 @@ class BlogTest(TestCase):
     def test_create(self):
         """Deve criar o objeto Blog"""
         self.assertTrue(Blog.objects.exists())
+
+    def test_created_at(self):
+        """Deve conter o campo created_at - criado em"""
+        self.assertIsInstance(self.obj.created_at, datetime)
+
+    def test_updated_at(self):
+        """Deve conter o campo updated_at - atualizado em"""
+        self.assertIsInstance(self.obj.updated_at, datetime)
+
+    def test_image_field_blank(self):
+        """Deve conter Black True para field Imagem"""
+        field = Blog._meta.get_field('image')
+        self.assertTrue(field.blank)
+
+    def test_image_field_null(self):
+        """Deve setar True para o campo null de imagem"""
+        field = Blog._meta.get_field('image')
+        self.assertTrue(field.null)
