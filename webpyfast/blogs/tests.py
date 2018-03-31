@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.db.models import QuerySet
 from django.test import TestCase
 from webpyfast.blogs.models import Blog
 
@@ -32,7 +33,7 @@ class BlogTest(TestCase):
     def test_context(self):
         """Deve ter o context blog"""
         blogs = self.resp.context['blogs']
-        self.assertIsInstance(blogs, Blog)
+        self.assertIsInstance(blogs, QuerySet)
 
     def test_create(self):
         """Deve criar o objeto Blog"""

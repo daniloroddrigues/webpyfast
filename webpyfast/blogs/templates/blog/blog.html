@@ -9,7 +9,7 @@
             <div class="row">
 
 
-                <div class="col-4">
+                <div class="col-3">
                     <div class="sidebar">
                         <h4>Categoria</h4>
                         <ul class="category">
@@ -23,18 +23,22 @@
                     </div>
                 </div>
 
-                <div class="col-8">
-                    <img src="{% static 'img/blog/9038266281_b3372d13f2_h.jpg' %}">
-                    <div class="card-content">
-                        <h3>Ambrose Redmoon</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, magni, recusandae!
-                            Accusantium dolor facilis incidunt, libero nemo nihil nisi quas soluta totam
-                            voluptatibus.
-                            Aspernatur expedita illo ipsa laborum repellat, tempore.</p>
-                        <a href="">ler mais <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
 
+                <div class="col-9">
+
+                    {% for blog in blogs %}
+
+                        <div class="card">
+                            <img src="{% static 'img/blog/tumblr_mxrv8vRMbA1st5lhmo1_12802.jpg' %}">
+                            <div class="card-content">
+                                <h3>{{ blog.title }}</h3>
+                                <p>{{ blog.description }}</p>
+                                <a href="">ler mais <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
 
             </div>
         </div>

@@ -3,7 +3,7 @@ from webpyfast.blogs.models import Blog
 
 
 def blog(request):
-    blogs = Blog()
+    blogs = Blog.objects.all()
     context = {
         'blogs': blogs
     }
