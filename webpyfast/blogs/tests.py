@@ -64,3 +64,7 @@ class BlogModelTest(TestCase):
         """Deve setar True para o campo null de imagem"""
         field = Blog._meta.get_field('image')
         self.assertTrue(field.null)
+
+    def test_str(self):
+        """Deve retornar o titulo do post no django admin"""
+        self.assertEqual('Titulo do Post', str(self.obj))
