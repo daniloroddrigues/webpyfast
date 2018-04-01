@@ -9,14 +9,6 @@ class BlogTest(TestCase):
     def setUp(self):
         self.resp = self.client.get('/blog/')
 
-        self.obj = Blog(
-            title='Titulo do Post',
-            slug='titulo-do-post',
-            image='url/to/image',
-            description='Descrição do blog',
-        )
-        self.obj.save()
-
     def test_get(self):
         """Deve retornar status code 200 para url /blog/"""
         self.assertEqual(200, self.resp.status_code)
@@ -27,13 +19,29 @@ class BlogTest(TestCase):
 
     def test_html(self):
         """Deve conter sidebar e category list"""
-        self.assertContains(self.resp, 'class="sidebar"', 1)
-        self.assertContains(self.resp, 'class="category"', 1)
+        contains = (
+            ('class="sidebar"', 1),
+            ('class="category"', 1),
+        )
+        with self.subTest():
+            for contain, index in contains:
+                self.assertContains(self.resp, contain, index)
 
     def test_context(self):
         """Deve ter o context blog"""
         blogs = self.resp.context['blogs']
         self.assertIsInstance(blogs, QuerySet)
+
+
+class BlogModelTest(TestCase):
+    def setUp(self):
+        self.obj = Blog(
+            title='Titulo do Post',
+            slug='titulo-do-post',
+            image='url/to/image',
+            description='Descrição do blog',
+        )
+        self.obj.save()
 
     def test_create(self):
         """Deve criar o objeto Blog"""
