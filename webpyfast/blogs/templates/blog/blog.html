@@ -26,13 +26,13 @@
 
                 <div class="col-9">
 
-                    {% for blog in blogs %}
+                    {% for post in posts %}
 
                         <div class="card">
                             <img src="{% static 'img/blog/tumblr_mxrv8vRMbA1st5lhmo1_12802.jpg' %}">
                             <div class="card-content">
-                                <h3>{{ blog.title }}</h3>
-                                <p>{{ blog.description }}</p>
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.description }}</p>
                                 <a href="">ler mais <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
