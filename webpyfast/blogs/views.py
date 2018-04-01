@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from webpyfast.blogs.models import Blog
+from webpyfast.blogs.models import Post
 
 
 def blog(request):
-    blogs = Blog.objects.all()
+    posts = Post.objects.all()
     context = {
-        'blogs': blogs
+        'posts': posts
     }
     return render(request, 'blog/blog.html', context)

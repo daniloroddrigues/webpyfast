@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from webpyfast.blogs.models import Blog
+from webpyfast.blogs.models import Post
 
-admin.site.register(Blog)
+admin.site.register(Post)
