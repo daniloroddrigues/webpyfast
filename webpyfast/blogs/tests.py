@@ -15,7 +15,7 @@ class BlogTest(TestCase):
 
     def test_template(self):
         """Deve usar o template blog/blog.html"""
-        self.assertTemplateUsed(self.resp, 'blog/blog.html')
+        self.assertTemplateUsed(self.resp, 'blog/post.html')
 
     def test_html(self):
         """Deve conter sidebar e category list"""
