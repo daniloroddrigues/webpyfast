@@ -2,5 +2,14 @@ from django.contrib import admin
 
 from webpyfast.blogs.models import Post, Category
 
-admin.site.register(Post)
-admin.site.register(Category)
+
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(Category, CategoryAdmin)

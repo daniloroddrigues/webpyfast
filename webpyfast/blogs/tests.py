@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import QuerySet
 from django.test import TestCase
-from webpyfast.blogs.models import Post
+from webpyfast.blogs.models import Post, Category
 
 
 class BlogTest(TestCase):
@@ -38,7 +38,7 @@ class BlogModelTest(TestCase):
         self.obj = Post(
             title='Titulo do Post',
             slug='titulo-do-post',
-            image='url/to/image',
+            image='blogs/images',
             description='Descrição do blog',
         )
         self.obj.save()
@@ -68,3 +68,20 @@ class BlogModelTest(TestCase):
     def test_str(self):
         """Deve retornar o titulo do post no django admin"""
         self.assertEqual('Titulo do Post', str(self.obj))
+
+
+class CategoryTest(TestCase):
+    def setUp(self):
+        self.obj = Category(
+            title='Título da Categoria',
+            slug='titulo-da-categoria'
+        )
+        self.obj.save()
+
+    def test_create(self):
+        """Deve existir o obj categoria"""
+        self.assertTrue(Category.objects.exists())
+
+    def test_str(self):
+        """Deve conter o Título da Categoria"""
+        self.assertEqual('Título da Categoria', str(self.obj))
