@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from webpyfast.core.views import index
-from webpyfast.blogs.views import blog
+from webpyfast.blogs.views import blog, post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('blog/', blog)
+    path('blog/', blog),
+    path('blog/url-do-post/', post_detail)
 ]

@@ -8,3 +8,7 @@ def blog(request):
         'posts': posts
     }
     return render(request, 'blog/post.html', context)
+
+
+def post_detail(request):
+    return render(request, 'blog/post_detail.html')
