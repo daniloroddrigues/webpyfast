@@ -30,19 +30,21 @@
 
 {% include 'nav.html' %}
 
-<section id="header-section" class="bg-light">
-    <div class="container">
-        <div class="row">
+{% block header_name %}
+    <section id="header-section" class="bg-light">
+        <div class="container">
+            <div class="row">
 
 
-            <div class="col">
-                <h1>Blog</h1>
-            </div>
+                <div class="col">
+                    <h1>Blog</h1>
+                </div>
 
 
-        </div><!-- ./row -->
-    </div><!-- ./container -->
-</section>
+            </div><!-- ./row -->
+        </div><!-- ./container -->
+    </section>
+{% endblock %}
 
 <main>
 

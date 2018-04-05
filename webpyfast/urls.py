@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('blog/', blog),
-    path('blog/url-do-post/', post_detail)
+    path('blog/<pk>/<slug>/', post_detail)
 ]

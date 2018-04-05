@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header_name %}
+    <section id="header-section" class="bg-light text-light"
+             style="background: url('{% static 'img/blog/tumblr_mxrv8vRMbA1st5lhmo1_12802.jpg' %}')">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col">
+                    <h1>{{ post_detail.title }}</h1>
+                </div>
+
+
+            </div><!-- ./row -->
+        </div><!-- ./container -->
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <section class="intern">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-9">
+
+                    <p>{{ post_detail.description }}</p>
+
+                </div>
+
+                <div class="col-3">
+                    <div class="sidebar">
+                        <h4>Categoria</h4>
+                        <ul class="category">
+                            <li><a href="">Design</a></li>
+                            <li><a href="">Python</a></li>
+                            <li><a href="">Javascript</a></li>
+                            <li><a href="">front-end</a></li>
+                            <li><a href="">back-end</a></li>
+                            <li><a href="">devops</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

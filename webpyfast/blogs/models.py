@@ -20,6 +20,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return '/blog/{}/{}/'.format(self.pk, self.slug)
+
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
