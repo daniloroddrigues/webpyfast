@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from webpyfast.blogs.models import Post
+
 
 class HomeTest(TestCase):
     def setUp(self):
@@ -26,3 +28,8 @@ class HomeTest(TestCase):
         with self.subTest():
             for contain, index in contains:
                 self.assertContains(self.resp, contain, index)
+
+    def test_context(self):
+        """Deve conter o contexto post"""
+        posts = self.resp.context['posts']
+        self.assertIsInstance(posts, Post)
