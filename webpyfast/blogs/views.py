@@ -4,10 +4,7 @@ from webpyfast.blogs.models import Post
 
 def blog(request):
     posts = Post.objects.all()
-    context = {
-        'posts': posts
-    }
-    return render(request, 'blog/post.html', context)
+    return render(request, 'blog/post.html', {'posts': posts})
 
 
 def post_detail(request, pk, slug):
