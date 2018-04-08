@@ -1,6 +1,5 @@
+from django.db.models import QuerySet
 from django.test import TestCase
-
-from webpyfast.blogs.models import Post
 
 
 class HomeTest(TestCase):
@@ -32,4 +31,4 @@ class HomeTest(TestCase):
     def test_context(self):
         """Deve conter o contexto post"""
         posts = self.resp.context['posts']
-        self.assertIsInstance(posts, Post)
+        self.assertIsInstance(posts, QuerySet)

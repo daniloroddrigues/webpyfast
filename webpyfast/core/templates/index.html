@@ -189,52 +189,23 @@
 
             <div class="row blog-list">
 
-                <div class="col-4">
-                    <div class="card">
-                        <img src="{% static 'img/blog/tumblr_mxrv8vRMbA1st5lhmo1_12802.jpg' %}">
-                        <div class="card-content">
-                            <h3>Interdum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, magni, recusandae!
-                                Accusantium dolor facilis incidunt, libero nemo nihil nisi quas soluta totam
-                                voluptatibus.
-                                Aspernatur expedita illo ipsa laborum repellat, tempore.</p>
-                            <a href="">ler mais <i class="fa fa-angle-right"></i></a>
+                {% for post in posts %}
+                    <div class="col-4">
+                        <div class="card">
+                            <img src="{% static 'img/blog/tumblr_mxrv8vRMbA1st5lhmo1_12802.jpg' %}">
+                            <div class="card-content">
+                                <h3>{{ post.title }}</h3>
+                                {{ post.description|truncatechars_html:100 }}
+                                <a href="{{ post.get_absolute_url }}" class="btn-block">ler mais <i class="fa fa-angle-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-4">
-                    <div class="card">
-                        <img src="{% static 'img/blog/tqable.jpg' %}">
-                        <div class="card-content">
-                            <h3>Portit Mollis Vitae</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, magni, recusandae!
-                                Accusantium dolor facilis incidunt, libero nemo nihil nisi quas soluta totam
-                                voluptatibus.
-                                Aspernatur expedita illo ipsa laborum repellat, tempore.</p>
-                            <a href="">ler mais <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <div class="card">
-                        <img src="{% static 'img/blog/9038266281_b3372d13f2_h.jpg' %}">
-                        <div class="card-content">
-                            <h3>Ambrose Redmoon</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, magni, recusandae!
-                                Accusantium dolor facilis incidunt, libero nemo nihil nisi quas soluta totam
-                                voluptatibus.
-                                Aspernatur expedita illo ipsa laborum repellat, tempore.</p>
-                            <a href="">ler mais <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <div class="row">
                 <div class="col text-center">
-                    <a href="" class="btn btn-success btn-lg" role="button">Ver mais</a>
+                    <a href="/blog" class="btn btn-success btn-lg" role="button">Ver mais</a>
                 </div>
             </div>
 

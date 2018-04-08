@@ -25,6 +25,11 @@ class PostDetailViewTest(TestCase):
         post_detail = self.resp.context['post_detail']
         self.assertIsInstance(post_detail, Post)
 
+    def test_context_category(self):
+        """Deve ter o contexto categoria"""
+        category = self.resp.context['categories']
+        self.assertIsInstance(self.resp, category)
+
     def test_get_absolute_url(self):
         """Deve conter a url /blog/1/titulo-do-post/"""
         url = '/blog/{}/{}/'.format(self.obj.pk, self.obj.slug)

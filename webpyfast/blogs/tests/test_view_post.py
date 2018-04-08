@@ -1,16 +1,9 @@
+from django.db.models import QuerySet
 from django.test import TestCase
-
-from webpyfast.blogs.models import Post
 
 
 class BlogViewTest(TestCase):
     def setUp(self):
-        self.obj = Post.objects.create(
-            title='Título do post',
-            slug='titulo-do-post',
-            image='url/da/imagem',
-            description='Descrição do post'
-        )
         self.resp = self.client.get('/blog/')
 
     def test_get(self):
@@ -34,4 +27,4 @@ class BlogViewTest(TestCase):
     def test_context(self):
         """Deve ter o context blog"""
         posts = self.resp.context['posts']
-        self.assertIsInstance(posts, Post)
+        self.assertIsInstance(posts, QuerySet)
