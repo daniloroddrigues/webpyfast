@@ -30,6 +30,7 @@ class Post(models.Model):
 
 
 class Category(models.Model):
+    post_foreignkey = models.ManyToManyField('blogs.Category')
     title = models.CharField(max_length=200)
     slug = models.SlugField()
 

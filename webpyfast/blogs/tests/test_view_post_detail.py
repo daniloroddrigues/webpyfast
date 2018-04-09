@@ -1,5 +1,5 @@
 from django.test import TestCase
-from webpyfast.blogs.models import Post
+from webpyfast.blogs.models import Post, Category
 
 
 class PostDetailViewTest(TestCase):
@@ -28,7 +28,7 @@ class PostDetailViewTest(TestCase):
     def test_context_category(self):
         """Deve ter o contexto categoria"""
         category = self.resp.context['categories']
-        self.assertIsInstance(self.resp, category)
+        self.assertIsInstance(category, Category)
 
     def test_get_absolute_url(self):
         """Deve conter a url /blog/1/titulo-do-post/"""
