@@ -40,3 +40,13 @@ class PostModelTest(TestCase):
     def test_str(self):
         """Deve retornar o titulo do post no django admin"""
         self.assertEqual('Titulo do Post', str(self.obj))
+
+    def test_tags_blank(self):
+        """Deve conter o campo em branco em tags"""
+        field = Post._meta.get_field('tags')
+        self.assertTrue(field.blank)
+
+    def test_categories_blank(self):
+        """Deve conter o campo em branco em categorias"""
+        field = Post._meta.get_field('categories')
+        self.assertTrue(field.blank)

@@ -3,7 +3,8 @@ from django.db import models
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING, null=True)
-    category = models.ForeignKey('Category', on_delete=models.DO_NOTHING, null=True)
+    tags = models.ManyToManyField('Tags', verbose_name='tags', blank=True)
+    categories = models.ManyToManyField('Category', verbose_name='categorias', blank=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     image = models.ImageField(
@@ -30,8 +31,7 @@ class Post(models.Model):
 
 
 class Category(models.Model):
-    post_foreignkey = models.ManyToManyField('blogs.Category')
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     slug = models.SlugField()
 
     def __str__(self):
@@ -40,3 +40,15 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'categoria'
         verbose_name_plural = 'categorias'
+
+
+class Tags(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
