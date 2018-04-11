@@ -10,6 +10,19 @@ class PostDetailViewTest(TestCase):
             image='url/da/imagem',
             description='Descrição do post',
         )
+
+        p1 = Post.objects.create(title='Titulo do post', slug='titulo-do-post', image='url/da/imagem',
+                                 description='Descrição do post')
+
+        p2 = Post.objects.create(title='Titulo do post', slug='titulo-do-post', image='url/da/imagem',
+                                 description='Descrição do post')
+
+        c1 = Category.objects.create(title='Titulo da categoria',
+                                     slug='titulo-da-categoria')
+
+        t1 = Tags.objects.create(title='Titulo da tag',
+                                 slug='titulo-da-tag')
+
         self.resp = self.client.get('/blog/{}/{}/'.format(self.obj.pk, self.obj.slug))
 
     def test_get(self):
