@@ -1,5 +1,7 @@
+from django.db.models import QuerySet
 from django.test import TestCase
-from webpyfast.blogs.models import Post, Category
+
+from webpyfast.blogs.models import Post, Category, Tags
 
 
 class PostDetailViewTest(TestCase):
@@ -11,17 +13,25 @@ class PostDetailViewTest(TestCase):
             description='Descrição do post',
         )
 
-        p1 = Post.objects.create(title='Titulo do post', slug='titulo-do-post', image='url/da/imagem',
-                                 description='Descrição do post')
+        post = Post.objects.create(
+            title='Titulo do post',
+            slug='titulo-do-post',
+            image='url/da/imagem',
+            description='Descrição do post'
+        )
 
-        p2 = Post.objects.create(title='Titulo do post', slug='titulo-do-post', image='url/da/imagem',
-                                 description='Descrição do post')
+        cat = Category.objects.create(
+            title='Titulo da categoria',
+            slug='titulo-da-categoria'
+        )
 
-        c1 = Category.objects.create(title='Titulo da categoria',
-                                     slug='titulo-da-categoria')
+        tag = Tags.objects.create(
+            title='Titulo da tag',
+            slug='titulo-da-tag'
+        )
 
-        t1 = Tags.objects.create(title='Titulo da tag',
-                                 slug='titulo-da-tag')
+        post.categories.add(cat)
+        post.tags.add(tag)
 
         self.resp = self.client.get('/blog/{}/{}/'.format(self.obj.pk, self.obj.slug))
 
@@ -38,10 +48,15 @@ class PostDetailViewTest(TestCase):
         post_detail = self.resp.context['post_detail']
         self.assertIsInstance(post_detail, Post)
 
-    def test_context_category(self):
-        """Deve ter o contexto categoria"""
-        category = self.resp.context['categories']
-        self.assertIsInstance(category, Category)
+    def test_context_categories(self):
+        """Deve ter o contexto categorias"""
+        categories = self.resp.context['categories']
+        self.assertIsInstance(categories, QuerySet)
+
+    def test_context_tags(self):
+        """Deve conter o contexto tags"""
+        tags = self.resp.context['tags']
+        self.assertIsInstance(tags, QuerySet)
 
     def test_get_absolute_url(self):
         """Deve conter a url /blog/1/titulo-do-post/"""

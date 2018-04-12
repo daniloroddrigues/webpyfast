@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from webpyfast.blogs.models import Post, Category
+from webpyfast.blogs.models import Post, Category, Tags
 
 
 def blog(request):
@@ -9,4 +9,6 @@ def blog(request):
 
 def post_detail(request, pk, slug):
     post = Post.objects.get(pk=pk, slug=slug)
-    return render(request, 'blog/post_detail.html', {'post_detail': post, 'categories': Category()})
+    categories = post.categories.all()
+    tags = post.tags.all()
+    return render(request, 'blog/post_detail.html', {'post_detail': post, 'categories': categories, 'tags': tags})
