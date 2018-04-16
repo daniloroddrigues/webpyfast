@@ -31,8 +31,8 @@ class Post(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    title = models.CharField('título da categoria', max_length=255)
+    slug = models.SlugField('slug')
 
     def __str__(self):
         return self.title
@@ -43,8 +43,8 @@ class Category(models.Model):
 
 
 class Tags(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    title = models.CharField('tags', max_length=255)
+    slug = models.SlugField('slug')
 
     def __str__(self):
         return self.title

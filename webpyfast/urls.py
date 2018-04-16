@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from webpyfast.core.views import index
-from webpyfast.blogs.views import blog, post_detail
+from webpyfast.blogs.views import blog, post_detail, category
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('blog/', blog),
-    path('blog/<pk>/<slug>/', post_detail)
+    path('blog/<pk>/<slug>/', post_detail),
+    path('category/<slug>/', category),
 ]
