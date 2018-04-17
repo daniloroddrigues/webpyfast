@@ -52,3 +52,16 @@ class Tags(models.Model):
     class Meta:
         verbose_name = 'tag'
         verbose_name_plural = 'tags'
+
+
+class Comments(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    comment = models.TextField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'comentário'
+        verbose_name_plural = 'comentários'

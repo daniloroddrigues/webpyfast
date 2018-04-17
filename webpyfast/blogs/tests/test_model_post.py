@@ -50,3 +50,8 @@ class PostModelTest(TestCase):
         """Deve conter o campo em branco em categorias"""
         field = Post._meta.get_field('categories')
         self.assertTrue(field.blank)
+
+    def test_comments_blank(self):
+        """Deve conter o campo em branco comments"""
+        field = Post._meta.get_field('comments')
+        self.assertTrue(field.blank)
